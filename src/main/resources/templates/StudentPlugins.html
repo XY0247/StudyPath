@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>StudyPath</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" id="theme-change" type="text/css" href="">
+</head>
+
+<body>
+<div class="loader">
+    <div class="spinner">
+        <img src="static/picture/loader.gif" alt="">
+    </div>
+</div>
+<!-- Main Body -->
+<div class="page-wrapper">
+    <!-- Header Start -->
+    <header th:if="${user.getLevel() == 1 }" class="header-wrapper main-header" th:fragment="HeaderStart">
+        <div class="header-inner-wrapper">
+            <div class="logo-wrapper">
+                <a href="" class="admin-logo">
+                    <img src="static/picture/logo.png" alt="">
+                </a>
+            </div>
+            <div class="header-right">
+                <div class="header-left">
+                    <div class="header-links">
+                        <a href="javascript:void(0);" class="toggle-btn">
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <div class="user-info-wrapper header-links">
+                        <a href="javascript:void(0);" class="user-info">
+                            <img src="static/picture/user.jpg" alt="" class="user-img">
+                            <div class="blink-animation">
+                                <span class="blink-circle"></span>
+                                <span class="main-circle"></span>
+                            </div>
+                        </a>
+                        <div class="user-info-box">
+                            <div class="drop-down-header">
+                                <h4 th:text="${user.getName()}"></h4>
+                                <p th:text="'学生 | '+${user.getNo()}"></p>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="EditProfile">
+                                        <i class="far fa-edit"></i> 修改个人信息
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="logout">
+                                        <i class="fas fa-sign-out-alt"></i> 注销
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Sidebar Start -->
+    <aside th:if="${user.getLevel() == 1 }" class="sidebar-wrapper" th:fragment="SidebarStart">
+        <div class="side-menu-wrap">
+            <ul class="main-menu">
+                <li>
+                    <a href="StudentIndex">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            </span>
+                        <span class="menu-text">
+                                主页
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="StudentCourseSelection">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            </span>
+                        <span class="menu-text">
+                                选课列表
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="StudentCourseDrop">
+                            <span class="icon-menu feather-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            </span>
+                        <span class="menu-text">
+                                已选课列表
+                            </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+<!--    EditProfile-->
+    <div class="col-xl-8" th:if="${user.getLevel() == 1 }" th:fragment="UserProfile">
+        <form class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Edit Profile</h4>
+                <div class="card-options"><a class="card-options-collapse" href="javascript:void(0);" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            <label class="form-label">学号</label>
+                            <input class="form-control" readonly="readonly" placeholder="Company" data-bs-original-title="" title="" th:value="${user.getNo()}">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="mb-3">
+                            <label class="form-label">姓名</label>
+                            <input class="form-control" readonly="readonly" placeholder="Username" data-bs-original-title="" title="" th:value="${user.getName()}">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="mb-3">
+                            <label class="form-label">性别</label>
+                            <input class="form-control" readonly="readonly"  data-bs-original-title="" title="" th:value="${user.getSex()}">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">年龄</label>
+                            <input class="form-control" readonly="readonly" placeholder="Company" data-bs-original-title="" title="" th:value="${user.getAge()}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">电话</label>
+                        <input class="form-control" readonly="readonly" placeholder="Company" data-bs-original-title="" title=""   th:if="${user.getPhone()}" th:value="${user.getPhone()}">
+                        <input class="form-control" readonly="readonly" placeholder="Company" data-bs-original-title="" title=""   th:unless="${user.getPhone()}" value="无">
+                    </div>
+                </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">所属学院</label>
+                            <input class="form-control" readonly="readonly" placeholder="Last Name" data-bs-original-title="" title="" th:value="${user.getDept()}">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+
+
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/swiper.min.js"></script>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/control-chart-apexcharts.js"></script>
+<!-- Page Specific -->
+<script src="static/js/nice-select.min.js"></script>
+<!-- Custom Script -->
+<script src="static/js/custom.js"></script>
+</body>
+
+</html>

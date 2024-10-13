@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>StudyPath</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
+	<link rel="stylesheet" href="static/css/swiper.min.css">
+    <!--Page Specific -->
+    <link rel="stylesheet" type="text/css" href="static/css/nice-select.css">
+    <!--Custom Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<link rel="stylesheet" id="theme-change" type="text/css" href="">
+</head>
+
+
+<body>
+<div class="loader">
+	  <div class="spinner">
+		<img src="static/picture/loader.gif" alt="">
+	  </div> 
+	</div>
+    <!-- Main Body -->
+    <div class="page-wrapper">
+
+			<!--		AdminPage-->
+			<!-- Header Start -->
+			<header  class="header-wrapper main-header" th:replace="Plugins.html::HeaderStart"></header>
+			<!-- Sidebar Start -->
+			<aside class="sidebar-wrapper" th:replace="Plugins.html::SidebarStart"></aside>
+
+            <!--        StudentPage-->
+            <!-- Header Start -->
+			<header  class="header-wrapper main-header" th:replace="StudentPlugins.html::HeaderStart"></header>
+			<!-- Sidebar Start -->
+			<aside class="sidebar-wrapper" th:replace="StudentPlugins.html::SidebarStart"></aside>
+
+<!--            TeacherPage-->
+            <!-- Header Start -->
+            <header  class="header-wrapper main-header" th:replace="TeacherPlugins.html::HeaderStart"></header>
+            <!-- Sidebar Start -->
+            <aside class="sidebar-wrapper" th:replace="TeacherPlugins.html::SidebarStart"></aside>
+
+        <!-- Container Start -->
+        <div class="page-wrapper">
+            <div class="main-content">
+                <!-- Page Title Start -->
+                <div class="row">
+                    <div class="col xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-box">
+                                <h4 class="page-title">User Profile</h4>
+                            </div>
+                            <div class="breadcrumb-list">
+                                <ul>
+                                    <li class="breadcrumb-link">
+                                        <a href="javascript:void(0);"><i class="fas fa-home mr-2"></i>Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-link active">User Profile</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Products view Start -->
+				<div class="row">
+                    <div class="col-xl-4">
+                        <div class="card"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
+                        <div class="card-header">
+                          <h4 class="card-title mb-0">My Profile</h4>
+                          <div class="card-options"><a class="card-options-collapse" href="javascript:void(0);" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                          <form method="post" action="EditProfile">
+                            <div class="profile-title">
+                                <div class="media ad-profile2-img">
+                                    <img alt="" src="static/picture/user.jpg">
+                                  <div class="media-body">
+                                    <h5 class="mb-1" th:text="${user.getName()}"></h5>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">账号</label>
+                              <input class="form-control" name="user" readonly="readonly" th:value="${user.getNo()}" >
+                            </div>
+                              <div class="mb-3">
+                                  <label class="form-label">旧的密码</label>
+                                  <input class="form-control" name="oldPassword" required>
+                              </div>
+                            <div class="mb-3">
+                              <label class="form-label">新的密码</label>
+                              <input class="form-control"  name="newPassword" required>
+                            </div>
+
+                              <div class="mb-3" th:if="${user.getLevel() == 1}">
+                                  <label class="form-label">电话号码</label>
+                                  <input class="form-control"  name="phone" required>
+                              </div>
+
+                            <div class="form-footer">
+                              <button class="btn btn-primary squer-btn" data-bs-original-title="" title="">保存</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div th:replace="StudentPlugins.html::UserProfile"></div>
+                    <div th:replace="TeacherPlugins.html::UserProfile"></div>
+              </div>
+			  <div class="ad-footer-btm">
+					<p>Copyright &copy; 2021.Company name All rights reserved.<a target="_blank" href="https://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Setting -->
+    <!-- Script Start -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/swiper.min.js"></script>
+    <!-- Page Specific -->
+    <script src="static/js/nice-select.min.js"></script>
+    <!-- Custom Script -->
+    <script src="static/js/custom.js"></script>
+<script src="static/js/Click.js"></script>
+
+</body>
+
+</html>

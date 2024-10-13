@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>StudyPath</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!-- Required Start Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
+    <!--Page Specific Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/nice-select.css">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" id="theme-change" type="text/css" href="">
+</head>
+
+<body>
+<div class="loader">
+    <div class="spinner">
+        <img src="static/picture/loader.gif" alt="">
+    </div>
+</div>
+<!-- Main Body -->
+<div class="page-wrapper">
+    <!-- Header Start -->
+    <header class="header-wrapper main-header" th:replace="Plugins.html::HeaderStart"></header>
+
+    <!-- Sidebar Start -->
+    <aside class="sidebar-wrapper" th:replace="Plugins.html::SidebarStart"></aside>
+
+    <!-- Container Start -->
+    <div class="page-wrapper">
+        <div class="main-content">
+            <!-- Page Title Start -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-title-wrapper">
+                        <div class="page-title-box">
+                            <h4 class="page-title" th:text="${editStudent.getName()}"></h4>
+                        </div>
+                        <div class="breadcrumb-list">
+                            <ul>
+                                <li class="breadcrumb-link">
+                                    <a href="index"><i class="fas fa-home mr-2"></i>主页</a>
+                                </li>
+                                <li class="breadcrumb-link active" >Basic Form</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- From Start -->
+            <div class="from-wrapper">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>学生信息设计</h4>
+                                <p class="card-desc">修改当前的学生信息</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-styled mb-0">
+                                        <tbody>
+                                        <tr>
+                                            <td>01</td>
+                                            <td>学生id</td>
+                                            <td class="text-end"  id="StudentId" th:text="${editStudent.getNo()}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>02</td>
+                                            <td>学生姓名</td>
+                                            <td class="text-end" th:text="${editStudent.getName()}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>03</td>
+                                            <td>学生性别</td>
+                                            <td class="text-end" th:text="${editStudent.getSex()}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>04</td>
+                                            <td>学生年龄</td>
+                                            <td class="text-end" th:text="${editStudent.getAge()}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>05</td>
+                                            <td>学生所属学院</td>
+                                            <td class="text-end" th:text="${editStudent.getDept()}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>06</td>
+                                            <td>学生电话</td>
+                                            <td class="text-end" th:unless="${editStudent.getPhone()}">无</td>
+                                            <td class="text-end" th:text="${editStudent.getPhone()}" th:if="${editStudent.getPhone()}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>07</td>
+                                            <td>学生密码</td>
+                                            <td class="text-end" th:text="${editStudent.getPassword()}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="separate-form" onsubmit="return false;">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h5 class="from-title mb-1">修改学生信息</h5>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="StudentName" class="col-form-label">学生姓名</label>
+                                                    <input class="form-control" type="text" placeholder="输入学生姓名" id="StudentName" th:value="${editStudent.getName()}" >
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="StudentSex" class="col-form-label">学生性别</label>
+                                                    <select class="select2 form-control" id="StudentSex">
+                                                        <option value="男" th:selected="${editStudent.getSex()} eq '男'">男</option>
+                                                        <option value="女" th:selected="${editStudent.getSex()} eq '女'">女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="StudentAge" class="col-form-label">学生年龄</label>
+                                                    <input class="form-control" type="number" placeholder="输入年龄" id="StudentAge" th:value="${editStudent.getAge()}">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="StudentPwd" class="col-form-label">学生密码</label>
+                                                    <input class="form-control" type="text" placeholder="输入密码" id="StudentPwd" th:value="${editStudent.getPassword()}">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="StudentDept" class="col-form-label">学生所属学院</label>
+                                                    <select class="select2 form-control" id="StudentDept">
+                                                        <option th:each="department : ${departments}" th:value="${department.getName()}" th:text="${department.getName()}" th:selected="${editStudent.getDept()} eq ${department.getName()} "></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                                <div class="form-group">
+                                                    <label for="StudentPhone" class="col-form-label">学生电话</label>
+                                                    <input class="form-control" type="text" placeholder="输入电话" id="StudentPhone" th:value="${editStudent.getPhone()}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <input id="checkbox3" type="checkbox">
+                                                <label for="checkbox3">Remember Me</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <button class="btn btn-primary" type="button">reset</button>
+                                            <button class="btn btn-danger" type="submit" onclick="submitEditStudentForm(this)" data-toggle="modal" data-target="#exampleModalLong">submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="ad-footer-btm">
+                <p>Copyright &copy; 2021.Company name All rights reserved.<a target="_blank" href="https://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Model-->
+<!--显示修改为这样-->
+<!--aria-modal="true" style="display: block; padding-right: 6px; "-->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">修改结果</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="EditStudentMessage">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <a href="index" id="EditStudentHref">
+                    <button type="button" class="btn btn-primary" id="returnEditCourse">返回学生列表</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script Start -->
+<div th:replace="Plugins.html::JsZip"></div>
+</body>
+
+</html>
